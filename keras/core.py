@@ -194,9 +194,10 @@ def train(args):
         iteration += 1
         
         # Save model
-        save_out_path = os.path.join(
-            models_dir, "md_{}_iters.h5".format(iteration))
-        model.save(save_out_path)
+        if iteration % 5000 == 0:
+            save_out_path = os.path.join(
+                models_dir, "md_{}_iters.h5".format(iteration))
+            model.save(save_out_path)
 
         # Stop training when maximum iteration achieves
         if iteration == 50001:
